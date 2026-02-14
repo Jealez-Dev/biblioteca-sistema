@@ -66,3 +66,87 @@ Para no afectar la versión principal del código, crea tu propia rama con tu no
 ### 6. Ejecutar el Sistema
 1. Abre tu navegador web.
 2. Ingresa a la siguiente dirección: [http://localhost/biblioteca-sistema](http://localhost/biblioteca-sistema)
+
+
+### 7. Cómo usar las Vistas Genéricas
+
+Este sistema utiliza un patrón de diseño basado en configuración para facilitar la creación de módulos CRUD (Crear, Leer, Actualizar, Eliminar).
+
+**Pasos para integrar un nuevo módulo:**
+
+1.  **Crear el Modelo (`models/TuModelo.php`)**:
+    Debe implementar métodos para consultar, insertar y actualizar datos.
+    *   `ListarTuModelo()`
+    *   `BuscarTuModeloById($id)`
+    *   `IngresarTuModelo2(...)`
+    *   `UpdateTuModelo2(...)`
+    *   `DeleteTuModelo(...)`
+
+2.  **Crear la Configuración (`config/forms/tuform.php`)**:
+    Este archivo define qué campos se mostrarán en la tabla y en los formularios.
+    
+    **Ejemplo completo:**
+    ```php
+    return [
+        // --- CONFIGURACIÓN PARA LA LISTA (list.php) ---
+        'global' => [
+            'titulo' => "Listado de Productos",       // Título de la página
+            'headers' => ['ID', 'Nombre', 'Precio'],  // Encabezados de la tabla
+            'keys' => ['id_prod', 'nombre', 'precio'],// Nombres de las columnas en la BD
+            'controller' => "Producto",               // Nombre del Controlador (para rutas)
+            'actionUpdate' => "UpdateProducto",       // Método del controlador para boton Editar
+            'actionDelete' => "DeleteProducto",       // Método del controlador para boton Eliminar
+            'idField' => "id_prod"                    // Nombre del campo clave primaria
+        ],
+    
+        // --- CONFIGURACIÓN PARA INSERTAR (insert.php) ---
+        'insert' => [
+            'tituloInsert' => "Ingreso de Producto",
+            'actionInsert' => "IngresarProducto2",    // Método que procesa el POST
+            'formFields' => [
+                // Array de campos:
+                ['label' => 'Nombre', 'name' => 'nombre', 'type' => 'text', 'required' => true],
+                ['label' => 'Precio', 'name' => 'precio', 'type' => 'number', 'step' => '0.01', 'required' => true],
+                ['label' => 'Categoría', 'name' => 'cat_id', 'type' => 'select', 'options' => [], 'required' => true]
+            ],
+        ],
+    
+        // --- CONFIGURACIÓN PARA ACTUALIZAR (update.php) ---
+        'update' => [
+            'tituloUpdate' => "Editar Producto",
+            'actionUpdate' => "UpdateProducto2",      // Método que procesa el POST de actualización
+            'formFields' => [
+                // El campo ID suele ser readonly en update
+                ['label' => 'ID', 'name' => 'id_prod', 'type' => 'number', 'readonly' => true],
+                ['label' => 'Nombre', 'name' => 'nombre', 'type' => 'text', 'required' => true],
+                ['label' => 'Precio', 'name' => 'precio', 'type' => 'number', 'step' => '0.01', 'required' => true],
+                 // Nota: Las 'options' de los select se suelen llenar en el controlador
+                ['label' => 'Categoría', 'name' => 'cat_id', 'type' => 'select', 'options' => [], 'required' => true]
+            ],
+        ]
+    ];
+    ```
+
+3.  **Crear el Controlador (`controllers/TuController.php`)**:
+    Es el cerebro que conecta todo. Sus funciones principales son:
+    *   **Constructor:** Carga los modelos necesarios.
+    *   **Métodos de Vista (`Listar`, `Ingresar`, `Update`):**
+        1.  Obtienen datos del modelo (si es necesario).
+        2.  Cargan la configuración del formulario (`require .../tuform.php`).
+        3.  Usan `extract()` para convertir el array de configuración en variables individuales (`$titulo`, `$headers`, `$formFields`...) que las vistas genéricas esperan recibir.
+        4.  Invocan a la vista genérica correspondiente (`views/generic/list.php`, `insert.php` o `update.php`).
+    *   **Métodos de Acción (`Ingresar...2`, `Update...2`):**
+        1.  Reciben los datos del formulario vía `$_POST`.
+        2.  Llaman al método del modelo para guardar en la BD.
+        3.  Redirigen o muestran un mensaje de éxito/error.
+
+4.  **Registrar la Ruta (`views/admon/routing.php`)**:
+    Para que el sistema sepa que tu controlador existe, debes registrarlo en dos lugares dentro de este archivo:
+    *   **Array `$controllers`**: Agrega el nombre de tu controlador (clave) y la lista de métodos permitidos (valor). Esto funciona como una lista blanca de seguridad.
+    *   **Switch `$controller`**: Agrega un `case` para instanciar tu controlador cuando sea llamado.
+
+5.  **Agregar al Menú (`views/admon/submenu.php`)**:
+    Finalmente, para que el usuario pueda acceder, agrega un nuevo ítem en el menú de navegación (navbar) apuntando a la acción de listar de tu controlador:
+    `<a href="?controller=TuControlador&action=ListarTuModelo">...</a>`
+
+
