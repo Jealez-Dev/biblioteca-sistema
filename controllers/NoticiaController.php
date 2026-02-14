@@ -9,7 +9,7 @@ class NoticiaController
 	}
 
  	function ListarNoticia(){
-		 require_once('../ejercicio/views/noticias/listnot.php');
+		 require_once('../biblioteca-sistema/views/noticias/listnot.php');
 	}
 
 	static public function ListarNoticia1(){
@@ -27,11 +27,11 @@ class NoticiaController
 	}
 
 	function IngresarNoticia(){
-		 require_once('../ejercicio/views/noticias/insertnot.php');
+		 require_once('../biblioteca-sistema/views/noticias/insertnot.php');
 	}
 
 	function IngresarNoticia1(){
-		 require_once('../ejercicio/views/noticias/insertnot1.php');
+		 require_once('../biblioteca-sistema/views/noticias/insertnot1.php');
 	}
 
 	static public function IngresarNoticia2($id, $titular, $url_imagen, $url_noticia, $fecha, $visible, $categoria){
@@ -49,11 +49,11 @@ class NoticiaController
 	}
 
 	function UpdateNoticia(){
-		 require_once('../ejercicio/views/noticias/updatenot.php');
+		 require_once('../biblioteca-sistema/views/noticias/updatenot.php');
 	}
 
 	function UpdateNoticia1(){
-		 require_once('../ejercicio/views/noticias/updatenot1.php');
+		 require_once('../biblioteca-sistema/views/noticias/updatenot1.php');
 	}
 
 	static public function UpdateNoticia2($id, $titular, $url_imagen, $url_noticia, $fecha, $visible, $categoria){
@@ -65,7 +65,7 @@ class NoticiaController
   // Para eliminar
 
 	function DeleteNoticia(){
-		 require_once('../ejercicio/views/noticias/deletednot.php');
+		 require_once('../biblioteca-sistema/views/noticias/deletednot.php');
 	}
 
 	static public function DeleteNoticia1($id){
