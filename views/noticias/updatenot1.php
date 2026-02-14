@@ -42,9 +42,9 @@ if (isset($_SESSION['User']) == 1 and (isset($_POST['id']) == 1))
 	<?php
 	}
     
-    require_once('../ejercicio/views/noticias/listnot.php');
+    require_once('../biblioteca-sistema/views/noticias/listnot.php');
 }else{
-    require_once('../ejercicio/views/noticias/listnot.php');
+    require_once('../biblioteca-sistema/views/noticias/listnot.php');
 }
 
 ?>  

@@ -41,10 +41,10 @@ if ((isset($_SESSION['User']) == 1) and (isset($_POST['id']) == 1))
 	<?php
     }
 
-    require_once('../ejercicio/views/noticias/insertnot.php');
+    require_once('../biblioteca-sistema/views/noticias/insertnot.php');
 }else
 {
-	require_once('../ejercicio/views/noticias/insertnot.php');
+	require_once('../biblioteca-sistema/views/noticias/insertnot.php');
 }
 
 ?>  
