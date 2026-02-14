@@ -52,7 +52,7 @@ $(function(){
               
          
                       <li>
-                          <a class="trigger right-caret nav-link">Medicina</a>
+                          <a class="trigger right-caret nav-link">Usuarios</a>
                           <ul class="dropdown-menu sub-menu">
                               <a class="dropdown-item" href="?controller=Noticia&action=ListarNoticia">Listar</a>
                               <div class="dropdown-divider"></div>
@@ -165,12 +165,45 @@ $(function(){
                       <li>
                           <a class="trigger right-caret nav-link">Usuarios</a>
                              <ul class="dropdown-menu sub-menu">
-                                 <a class="dropdown-item" href="?controller=Usuarios&action=ListarUsuarios">Listar </a>
-                                 <a class="dropdown-item" href="?controller=Usuarios&action=IngresarUsuario">Ingresar</a>
+                                 <a class="dropdown-item" href="?controller=User&action=ListarUser">Listar</a>
+                                 <a class="dropdown-item" href="?controller=User&action=IngresarUser">Ingresar</a>
                                  <div class="dropdown-divider"></div>
                                  <div class="dropdown-divider"></div>
                                   
-                                 <a class="dropdown-item" href="?controller=Usuarios&action=Desconectar">Cerrar Sesión</a>
+                                 <a class="dropdown-item" href="?controller=User&action=Desconectar">Cerrar Sesión</a>
+                          </ul>
+                      </li>
+                      <li>
+                          <a class="trigger right-caret nav-link">Administradores</a>
+                             <ul class="dropdown-menu sub-menu">
+                                 <a class="dropdown-item" href="?controller=Admin&action=ListarAdmin">Listar</a>
+                                 <a class="dropdown-item" href="?controller=Admin&action=IngresarAdmin">Ingresar</a>
+                                 <div class="dropdown-divider"></div>
+                                 <div class="dropdown-divider"></div>
+                                  
+                                 <a class="dropdown-item" href="?controller=Admin&action=Desconectar">Cerrar Sesión</a>
+                          </ul>
+                      </li>
+                      <li>
+                          <a class="trigger right-caret nav-link">Lectores</a>
+                             <ul class="dropdown-menu sub-menu">
+                                 <a class="dropdown-item" href="?controller=Lector&action=ListarLector">Listar</a>
+                                 <a class="dropdown-item" href="?controller=Lector&action=IngresarLector">Ingresar</a>
+                                 <div class="dropdown-divider"></div>
+                                 <div class="dropdown-divider"></div>
+                                  
+                                 <a class="dropdown-item" href="?controller=Lector&action=Desconectar">Cerrar Sesión</a>
+                          </ul>
+                      </li>
+                      <li>
+                          <a class="trigger right-caret nav-link">Catg de Usuarios</a>
+                             <ul class="dropdown-menu sub-menu">
+                                 <a class="dropdown-item" href="?controller=CatgDeUser&action=ListarCatgDeUser">Listar </a>
+                                 <a class="dropdown-item" href="?controller=CatgDeUser&action=IngresarCatgDeUser">Ingresar</a>
+                                 <div class="dropdown-divider"></div>
+                                 <div class="dropdown-divider"></div>
+                                  
+                                 <a class="dropdown-item" href="?controller=CatgDeUser&action=Desconectar">Cerrar Sesión</a>
                           </ul>
                       </li>
                       <li>
