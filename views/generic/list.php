@@ -24,6 +24,15 @@ $numrows = mysqli_num_rows($registros);
     <h4> <?php echo $titulo; ?> </h4>
     <br> <br>
 
+    <?php if (isset($alert)): ?>
+                    <div class="alert <?php echo $alert['type']; ?> alert-dismissible fade show" role="alert">
+                        <?php echo $alert['message']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
     <div class="table-responsive">
         <table id="dtBasicExample" data-order='[[ 0, "asc" ]]' data-page-length='10' class="table table-sm table-striped table-hover table-bordered" cellspacing="0" width="100%">
             

@@ -155,16 +155,38 @@ class LectorController
          extract($config['update']);
          
          // 3. Inyectar valores en los campos del formulario
+         // 2.b Cargar opciones para el select de categorias (Igual que en Insert)
+         $CatgDeUser = $this->CatgDeUser->ListarCatgDeUser();
+         $catgDeUserOptions = [];
+         if($CatgDeUser){
+            while($c = mysqli_fetch_assoc($CatgDeUser)){
+                $catgDeUserOptions[$c['ID']] = $c['ID'] . ' - ' . $c['Tipo']; 
+            }
+         }
+
+         // 3. Inyectar valores en los campos del formulario
          foreach ($formFields as &$field) {
-            // Caso especial para DNI de Admin que en BD es DNI_Usuario
+            // Inyectamos el VALOR actual de la base de datos
+            // Caso especial: DNI en el form se llama 'DNI', pero en BD 'DNI_Usuario'
             if ($field['name'] == 'DNI' && isset($datosUsuario['DNI_Usuario'])) {
                 $field['value'] = $datosUsuario['DNI_Usuario'];
             }
             elseif (isset($datosUsuario[$field['name']])) {
                 $field['value'] = $datosUsuario[$field['name']];
             }
+
+            // Inyectamos las OPCIONES para los selects
+            if ($field['name'] === 'Carrera') {
+                $field['options'] = $this->Carreras;
+            }
+            if ($field['name'] === 'Departamento') {
+                $field['options'] = $this->Departamentos;
+            }
+            if ($field['name'] === 'ID_Catg_de_User_SA') {
+                $field['options'] = $catgDeUserOptions;
+            }
          }
-         unset($field); // ROMPEMOS LA REFERENCIA (Importante para que no afecte al siguiente foreach)
+         unset($field); // ROMPEMOS LA REFERENCIA
 
          require_once('../biblioteca-sistema/views/generic/update.php');
     }
@@ -172,11 +194,14 @@ class LectorController
 	public function UpdateLector2(){
          // 1. Recoger datos del POST
          $DNI = $_POST['DNI'];
-         $Username = $_POST['Username'];
-         $Password = $_POST['Password'];
+         $Carrera_Departamento = $_POST['Carrera'] ?? $_POST['Departamento'] ?? null;
+         $ID_Catg_de_User_SA = $_POST['ID_Catg_de_User_SA'];
+
+         $DNI = preg_replace('/\D/', '', $DNI);
+         $ID_Catg_de_User_SA = preg_replace('/[^0-9]/', '', $ID_Catg_de_User_SA);
 
          // 2. Llamar al Modelo (UpdateUser2 en lugar de Ingresar)
-         $result = $this->lectorModel->UpdateLector2($DNI, $Username, $Password);
+         $result = $this->lectorModel->UpdateLector2($DNI, $Carrera_Departamento, $ID_Catg_de_User_SA);
 
          // 3. Preparar mensaje
          if ($result) {
@@ -195,9 +220,8 @@ class LectorController
          $registros = $this->lectorModel->ListarLector();
          $config = require('../biblioteca-sistema/config/forms/lectorform.php');
          extract($config['global']);
-         extract($config['insert']); 
          
-         require_once('../biblioteca-sistema/views/generic/insert.php');
+         require_once('../biblioteca-sistema/views/generic/list.php');
 	}
   
   // Para eliminar

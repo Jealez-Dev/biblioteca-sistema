@@ -119,63 +119,13 @@
     </div> <!-- Fin page-content -->
 </div> <!-- Fin container -->
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Lógica específica para Lector (Estudiante/Docente)
-    const chkEstudiante = document.querySelector('[name="Estudiante"]');
-    const chkDocente = document.querySelector('[name="Docente"]');
-    const divCarrera = document.getElementById('div_Carrera');
-    const divDepto = document.getElementById('div_Departamento');
-    const inputCarrera = document.querySelector('[name="Carrera"]');
-    const inputDepto = document.querySelector('[name="Departamento"]');
-
-    if (chkEstudiante && chkDocente && divCarrera && divDepto) {
-        
-        function updateForm() {
-            // Estudiante maneja Carrera
-            if (chkEstudiante.checked) {
-                divCarrera.style.display = 'block';
-                if(inputCarrera) inputCarrera.required = true;
-                
-                // Desactivar Docente
-                chkDocente.checked = false;
-                divDepto.style.display = 'none';
-                if(inputDepto) inputDepto.required = false;
-            } 
-            // Docente maneja Departamento
-            else if (chkDocente.checked) {
-                divDepto.style.display = 'block';
-                if(inputDepto) inputDepto.required = true;
-                
-                // Desactivar Estudiante
-                chkEstudiante.checked = false;
-                divCarrera.style.display = 'none';
-                if(inputCarrera) inputCarrera.required = false;
-            }
-            // Ninguno
-            else {
-                divCarrera.style.display = 'none';
-                divDepto.style.display = 'none';
-                if(inputCarrera) inputCarrera.required = false;
-                if(inputDepto) inputDepto.required = false;
-            }
-        }
-
-        chkEstudiante.addEventListener('change', function() {
-            if(this.checked) chkDocente.checked = false;
-            updateForm();
-        });
-
-        chkDocente.addEventListener('change', function() {
-            if(this.checked) chkEstudiante.checked = false;
-            updateForm();
-        });
-
-        // Estado inicial
-        updateForm();
-    }
-});
-</script>
+<?php
+// Si existe un archivo JS con el nombre del controlador (ej: js/forms/Usuario.js), lo cargamos
+$customScript = "js/formsjs/" . $controller . ".js";
+if (file_exists($customScript)) {
+    echo '<script src="' . $customScript . '"></script>';
+}
+?>
 
 <p> <br> </p>
 

@@ -28,7 +28,7 @@ return [
         'tituloUpdate' => "Actualización de Lector",
         'actionUpdate' => "UpdateLector2",
         'formFields' => [
-            ['label' => 'Seleccione el DNI', 'name' => 'DNI', 'type' => 'select', 'required' => true],
+            ['label' => 'Seleccione el DNI', 'name' => 'DNI', 'type' => 'number', 'required' => true, 'readonly' => true],
             ['label' => 'ID_Catg_de_User_SA', 'name' => 'ID_Catg_de_User_SA', 'type' => 'select', 'required' => true],
             ['label' => 'Seleccione Carrera', 'name' => 'Carrera', 'type' => 'select', 'required' => true],
             ['label' => 'Seleccione Departamento', 'name' => 'Departamento', 'type' => 'select', 'required' => true]
