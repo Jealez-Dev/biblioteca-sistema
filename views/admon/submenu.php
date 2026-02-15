@@ -167,10 +167,6 @@ $(function(){
                              <ul class="dropdown-menu sub-menu">
                                  <a class="dropdown-item" href="?controller=User&action=ListarUser">Listar</a>
                                  <a class="dropdown-item" href="?controller=User&action=IngresarUser">Ingresar</a>
-                                 <div class="dropdown-divider"></div>
-                                 <div class="dropdown-divider"></div>
-                                  
-                                 <a class="dropdown-item" href="?controller=User&action=Desconectar">Cerrar Sesión</a>
                           </ul>
                       </li>
                       <li>
@@ -178,10 +174,6 @@ $(function(){
                              <ul class="dropdown-menu sub-menu">
                                  <a class="dropdown-item" href="?controller=Admin&action=ListarAdmin">Listar</a>
                                  <a class="dropdown-item" href="?controller=Admin&action=IngresarAdmin">Ingresar</a>
-                                 <div class="dropdown-divider"></div>
-                                 <div class="dropdown-divider"></div>
-                                  
-                                 <a class="dropdown-item" href="?controller=Admin&action=Desconectar">Cerrar Sesión</a>
                           </ul>
                       </li>
                       <li>
@@ -189,10 +181,6 @@ $(function(){
                              <ul class="dropdown-menu sub-menu">
                                  <a class="dropdown-item" href="?controller=Lector&action=ListarLector">Listar</a>
                                  <a class="dropdown-item" href="?controller=Lector&action=IngresarLector">Ingresar</a>
-                                 <div class="dropdown-divider"></div>
-                                 <div class="dropdown-divider"></div>
-                                  
-                                 <a class="dropdown-item" href="?controller=Lector&action=Desconectar">Cerrar Sesión</a>
                           </ul>
                       </li>
                       <li>
@@ -200,10 +188,6 @@ $(function(){
                              <ul class="dropdown-menu sub-menu">
                                  <a class="dropdown-item" href="?controller=CatgDeUser&action=ListarCatgDeUser">Listar </a>
                                  <a class="dropdown-item" href="?controller=CatgDeUser&action=IngresarCatgDeUser">Ingresar</a>
-                                 <div class="dropdown-divider"></div>
-                                 <div class="dropdown-divider"></div>
-                                  
-                                 <a class="dropdown-item" href="?controller=CatgDeUser&action=Desconectar">Cerrar Sesión</a>
                           </ul>
                       </li>
                       <li>
@@ -219,7 +203,7 @@ $(function(){
 
 
   				  <li class="nav-item">
-    				<a class="nav-link disabled" href="#">Disabled</a>
+    				<a class="nav-link" href="?controller=User&action=Desconectar">Cerrar Sesión</a>
   				  </li>
             <login>
             <a class="text-dark" text-align="right"> <b> User: </b> <?php echo $_SESSION['User']?> <b>  Nivel:</b> <?php echo $_SESSION['Nivel']?> </a>
