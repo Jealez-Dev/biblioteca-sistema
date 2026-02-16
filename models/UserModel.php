@@ -76,7 +76,7 @@ class UserModel
 
 	public static function UpdateUser2 ($DNI, $Nombre, $Apellido, $Edad, $Correo, $Num_Telefono){
 
-		$sql_noticia= "UPDATE Usuario SET DNI = '$DNI', Nombre = '$Nombre', Apellido = '$Apellido', Edad = '$Edad', Correo = '$Correo', Num_Telefono = '$Num_Telefono' WHERE DNI = $DNI";
+		$sql_noticia= "UPDATE Usuario SET Nombre = '$Nombre', Apellido = '$Apellido', Edad = '$Edad', Correo = '$Correo', Num_Telefono = '$Num_Telefono' WHERE DNI = $DNI";
 		$result_noticia = UserModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
