@@ -61,7 +61,7 @@ class UserModel
 
 	public static function IngresarUser2 ($DNI, $Nombre, $Apellido, $Edad, $Correo, $Num_Telefono){
 
-		$sql_noticia = "INSERT INTO Usuario (DNI, Nombre, Apellido, Edad, Correo, Num_Telefono) VALUES ($DNI, '$Nombre', '$Apellido', '$Edad', '$Correo', '$Num_Telefono')";
+		$sql_noticia = "INSERT INTO Usuario (DNI, Nombre, Apellido, Edad, Correo, Num_Telefono) VALUES ('$DNI', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Num_Telefono')";
 		$result_noticia = UserModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
