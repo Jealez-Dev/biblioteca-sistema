@@ -19,12 +19,6 @@
 
 	<script src="../biblioteca-sistema/js/jquery.min.js"></script>
 
-	<!--datatables-->
-  	<link rel="stylesheet" type="text/css" href="../biblioteca-sistema/css/datatables.min.css" />
-  	<script type="text/javascript" src="../biblioteca-sistema/js/datatables.min.js"></script>
-  	<script type="text/javascript" src="../biblioteca-sistema/js/datatable.js"></script>
-  	<!--datatables-->
-
   </head>
 
 <body>
@@ -50,6 +44,12 @@
 		    <script src="../biblioteca-sistema/js/jquery-3.3.1.min.js"></script>
 		    <script src="../biblioteca-sistema/js/popper.min.js"></script>
 		    <script src="../biblioteca-sistema/js/bootstrap.min.js"></script>
+
+			<!--datatables-->
+			<link rel="stylesheet" type="text/css" href="../biblioteca-sistema/css/datatables.min.css" />
+			<script type="text/javascript" src="../biblioteca-sistema/js/datatables.min.js"></script>
+			<script type="text/javascript" src="../biblioteca-sistema/js/datatable.js"></script>
+			<!--datatables-->
 
 <footer>
 	<?php 
