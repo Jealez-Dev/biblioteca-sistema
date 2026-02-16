@@ -41,22 +41,22 @@ $(function(){
     		      
               <ul class="dropdown-menu">
                       <li>
-                          <a class="trigger right-caret nav-link">Noticia</a>
+                          <a class="trigger right-caret nav-link">Editorial</a>
                           <ul class="dropdown-menu sub-menu">
-                              <a class="dropdown-item" href="?controller=Noticia&action=ListarNoticia">Listar</a>
+                              <a class="dropdown-item" href="?controller=Editorial&action=ListarEditorial">Listar</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="?controller=Noticia&action=IngresarNoticia">Ingresar</a>
+                              <a class="dropdown-item" href="?controller=Editorial&action=IngresarEditorial">Ingresar</a>
                           </ul>
                       </li>
                      
               
          
                       <li>
-                          <a class="trigger right-caret nav-link">Usuarios</a>
+                          <a class="trigger right-caret nav-link">Autor</a>
                           <ul class="dropdown-menu sub-menu">
-                              <a class="dropdown-item" href="?controller=Noticia&action=ListarNoticia">Listar</a>
+                              <a class="dropdown-item" href="?controller=Autor&action=ListarAutor">Listar</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="?controller=Noticia&action=IngresarNoticia">Ingresar</a>
+                              <a class="dropdown-item" href="?controller=Autor&action=IngresarAutor">Ingresar</a>
                           </ul>
                       </li>
                      
@@ -156,15 +156,7 @@ $(function(){
                 </ul>
   				  
             </li>
-                     <li>
-                          <a class="trigger right-caret nav-link">Editorial</a>
-                          <ul class="dropdown-menu sub-menu">
-                              <a class="dropdown-item" href="?controller=Editorial&action=ListarEditorial">Listar</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="?controller=Editorial&action=IngresarEditorial">Ingresar</a>
-                          </ul>
-                     </li>
-              </ul>       
+</ul>       
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Seguridad</a>
