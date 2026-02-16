@@ -44,7 +44,7 @@ class EditorialModel
     // para el resto de las operaciones
 	
 	public static function ListarEditorial(){
-		$sql_Editorial = "SELECT * FROM editorial ORDER BY ID asc";
+		$sql_Editorial = "SELECT * FROM Editorial ORDER BY ID asc";
 		$result_Editorial = EditorialModel::Get_Data($sql_Editorial);
   		return $result_Editorial;
 	}
@@ -53,14 +53,14 @@ class EditorialModel
 
 	public static function BuscarUltimaEditorial(){
 
-		$sql_Editorial = "SELECT (max(ID)) as identific FROM editorial order BY ID asc";
+		$sql_Editorial = "SELECT (max(ID)) as identific FROM Editorial order BY ID asc";
 		$result_Editorial = EditorialModel::Get_Data($sql_Editorial);
   		return $result_Editorial;
 	}
 
 	public static function IngresarEditorial2 ($id, $nombre, $sedeMatriz, $email, $telefono){
 
-		$sql_Editorial = "INSERT INTO editorial (ID, Nombre, SedeMatriz, Email, Telefono) VALUES ('$id', '$nombre', '$sedeMatriz', '$email', '$telefono')";
+		$sql_Editorial = "INSERT INTO Editorial (ID, Nombre, SedeMatriz, Email, Telefono) VALUES ('$id', '$nombre', '$sedeMatriz', '$email', '$telefono')";
 		$result_Editorial = EditorialModel::Update_Data($sql_Editorial);
   		return $result_Editorial;
 	}
@@ -69,14 +69,14 @@ class EditorialModel
 	// Para la actualización 
 
 		public static function BuscarEditorialById($id){
-    	$sql_Editorial = "SELECT * FROM editorial WHERE ID = '$id'";
+    	$sql_Editorial = "SELECT * FROM Editorial WHERE ID = '$id'";
 		$result_Editorial = EditorialModel::Get_Data($sql_Editorial);
   		return $result_Editorial;
 	}
 
 	public static function UpdateEditorial2 ($id, $nombre, $sedeMatriz, $email, $telefono){
 
-		$sql_Editorial= "UPDATE editorial SET  Nombre = '$nombre', SedeMatriz = '$sedeMatriz', Email = '$email', Telefono = '$telefono' WHERE ID = '$id'";
+		$sql_Editorial= "UPDATE Editorial SET  Nombre = '$nombre', SedeMatriz = '$sedeMatriz', Email = '$email', Telefono = '$telefono' WHERE ID = '$id'";
 		$result_Editorial = EditorialModel::Update_Data($sql_Editorial);
   		return $result_Editorial;
 	}
@@ -84,7 +84,7 @@ class EditorialModel
 	// Para eliminar
 
 	public static function DeleteEditorial ($id){
-		$sql_Editorial = "DELETE FROM editorial WHERE ID = '$id'";
+		$sql_Editorial = "DELETE FROM Editorial WHERE ID = '$id'";
 		$result_Editorial = EditorialModel::Update_Data($sql_Editorial);
   		return $result_Editorial;
 	}
