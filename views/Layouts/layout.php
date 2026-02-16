@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- , shrink-to-fit=no este pedazo lo quite cuando introduje el colapse de los divs-->
-    <title>Sistema de Telemedicina </title>
+    <title>Biblioteca Sonia Quijada </title>
     <link rel="icon" type="image/png" href="..\biblioteca-sistema\imagenes\LogoPaginaTelemedicina.gif">
     <link rel="shortcut icon" href="..\biblioteca-sistema\imagenes\LogoPaginaTelemedicina.gif">
     
