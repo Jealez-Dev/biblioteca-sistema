@@ -9,6 +9,7 @@ $controllers=array(
 	'Lector' =>['ListarLector', 'IngresarLector', 'IngresarLector2', 'UpdateLector', 'UpdateLector2', 'DeleteLector', 'DeleteLector1'],
 	'CatgDeUser' =>['ListarCatgDeUser', 'UpdateCatgDeUser', 'UpdateCatgDeUser2'],
 	'Editorial' =>['ListarEditorial', 'IngresarEditorial', 'IngresarEditorial2', 'UpdateEditorial', 'UpdateEditorial2', 'DeleteEditorial', 'DeleteEditorial1'],
+	'Autor'  =>['ListarAutor', 'IngresarAutor', 'IngresarAutor2', 'UpdateAutor', 'UpdateAutor2', 'DeleteAutor', 'DeleteAutor1'],
 	// este arreglo ira creciendo a la medida que va creciendo las opciones de menu me mi sistema
 );
 
@@ -50,6 +51,9 @@ function call($controller, $action){
 	    case 'Editorial':
 			  $controller= new EditorialController();
 			  break;
+		case 'Autor':
+			  $controller= new AutorController();
+			  break;	  
 			 // en este switche habran tantos case como listas del menu se tengan
 	}
 	
