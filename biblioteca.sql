@@ -256,7 +256,7 @@ CREATE TABLE `Usuario` (
   `Nombre` varchar(20) DEFAULT NULL,
   `Apellido` varchar(20) DEFAULT NULL,
   `Edad` int(11) DEFAULT NULL,
-  `Correo` varchar(20) DEFAULT NULL,
+  `Correo` varchar(255) DEFAULT NULL,
   `Num_Telefono` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
