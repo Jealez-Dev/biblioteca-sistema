@@ -153,10 +153,17 @@ $(function(){
                               <a class="dropdown-item" href="?controller=Noticia&action=IngresarNoticia">Ingresar</a>
                           </ul>
                       </li>
-                     
                 </ul>
   				  
             </li>
+                     <li>
+                          <a class="trigger right-caret nav-link">Editorial</a>
+                          <ul class="dropdown-menu sub-menu">
+                              <a class="dropdown-item" href="?controller=Editorial&action=ListarEditorial">Listar</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="?controller=Editorial&action=IngresarEditorial">Ingresar</a>
+                          </ul>
+                     </li>
               </ul>       
 
             <li class="nav-item dropdown">
