@@ -64,7 +64,7 @@ class UserController
         }
 
          // 2. Llamar al Modelo
-         $result = $this->userModel->IngresarUser2($Nombre, $Apellido, $Edad, $Correo, $Num_Telefono, $DNI);
+         $result = $this->userModel->IngresarUser2($DNI, $Nombre, $Apellido, $Edad, $Correo, $Num_Telefono);
 
          // 3. Preparar mensaje
          if ($result) {
