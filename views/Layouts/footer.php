@@ -15,7 +15,7 @@
                   <h6 class="mb-0">
                       <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFoot" aria-expanded="false" aria-controls="collapseFoot">
                       <label class="text-success"> <strong> Sistemas de Información I </strong></label> 
-                       <br> @Copyright 2020 
+                       <br> @Copyright 2026 
                       </button>
                   </h6>
               </div>
