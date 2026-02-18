@@ -65,7 +65,14 @@
                             $title = isset($field['title']) ? "title='{$field['title']}'" : '';
                             $options = $field['options'] ?? [];
                         ?>
-                        
+
+                        <?php if ($type === 'hidden'): ?>
+                            <!-- Campo oculto: se renderiza sin contenedor visual -->
+                            <input type="hidden" 
+                                   name="<?php echo $field['name']; ?>" 
+                                   value="<?php echo $value; ?>">
+
+                        <?php else: ?>
                         <div class="col-md-6 mb-3" id="div_<?php echo $field['name']; ?>"> <!-- Usamos col-md-6 para 2 columnas -->
                             <label for="<?php echo $field['name']; ?>" class="font-weight-bold"> 
                                 <?php echo $field['label']; ?>: 
@@ -82,7 +89,7 @@
                             <?php elseif ($type === 'select'): ?>
                                 <select class="form-control" name="<?php echo $field['name']; ?>" <?php echo $required; ?>>
                                     <?php foreach ($options as $val => $text): 
-                                        $optionValue = (is_int($val)) ? $text : $val; // Simplificación: Si key es int, usamos valor. Si key es string (o ID), usamos key.
+                                        $optionValue = (is_int($val)) ? $text : $val;
                                         $selected = ($value == $optionValue) ? 'selected' : '';
                                     ?>
                                         <option value="<?php echo $optionValue; ?>" <?php echo $selected; ?>>
@@ -90,6 +97,27 @@
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
+
+                            <?php elseif ($type === 'datalist'): ?>
+                                <?php 
+                                    $datalistId = 'datalist_' . $field['name'];
+                                    $dataHidden = isset($field['data-hidden']) ? $field['data-hidden'] : '';
+                                ?>
+                                <input type="text" 
+                                       class="form-control" 
+                                       name="<?php echo $field['name']; ?>" 
+                                       list="<?php echo $datalistId; ?>"
+                                       data-hidden="<?php echo $dataHidden; ?>"
+                                       value="<?php echo $value; ?>" 
+                                       <?php echo $required; ?> 
+                                       <?php echo $readonly; ?>
+                                       autocomplete="off"
+                                       placeholder="Escriba para buscar <?php echo strtolower($field['label']); ?>">
+                                <datalist id="<?php echo $datalistId; ?>">
+                                    <?php foreach ($options as $id => $text): ?>
+                                        <option value="<?php echo $text; ?>" data-id="<?php echo $id; ?>"></option>
+                                    <?php endforeach; ?>
+                                </datalist>
 
                             <?php else: ?>
                                 <input type="<?php echo $type; ?>" 
@@ -104,6 +132,7 @@
                                        placeholder="Ingrese <?php echo strtolower($field['label']); ?>">
                             <?php endif; ?>
                         </div>
+                        <?php endif; ?>
 
                         <?php endforeach; ?>
 
@@ -128,11 +157,3 @@ if (file_exists($customScript)) {
 ?>
 
 <p> <br> </p>
-
-<!-- Incluimos la lista debajo -->
-<?php 
-// Aseguramos que existan las variables para la lista antes de incluirla
-if (isset($registros) && isset($headers) && isset($keys)) {
-    require_once('views/generic/list.php'); 
-}
-?>

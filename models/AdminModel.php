@@ -45,7 +45,7 @@ class AdminModel
 	
 
 	public static function ListarAdmin(){
-		$sql_noticia = "SELECT * FROM Admin ORDER BY DNI_Usuario asc";
+		$sql_noticia = "SELECT * FROM admin ORDER BY DNI_Usuario asc";
 		$result_noticia = AdminModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -54,14 +54,14 @@ class AdminModel
 
 	public static function BuscarUltimoAdmin(){
 
-		$sql_noticia = "SELECT (max(DNI)) as identific FROM Admin order BY DNI_Usuario asc";
+		$sql_noticia = "SELECT (max(DNI)) as identific FROM admin order BY DNI_Usuario asc";
 		$result_noticia = AdminModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function IngresarAdmin2 ($DNI, $Username, $Password){
 
-		$sql_noticia = "INSERT INTO Admin (DNI_Usuario, Username, Password) VALUES ($DNI, '$Username', '$Password')";
+		$sql_noticia = "INSERT INTO admin (DNI_Usuario, Username, Password) VALUES ($DNI, '$Username', '$Password')";
 		$result_noticia = AdminModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -69,14 +69,14 @@ class AdminModel
 	// Para la actualización 
 
 	public static function BuscarAdminById($DNI){
-    	$sql_noticia = "SELECT * FROM Admin WHERE DNI_Usuario = $DNI";
+    	$sql_noticia = "SELECT * FROM admin WHERE DNI_Usuario = $DNI";
 		$result_noticia = AdminModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function UpdateAdmin2 ($DNI, $Username, $Password){
 
-		$sql_noticia= "UPDATE Admin SET DNI_Usuario = '$DNI', Username = '$Username', Password = '$Password' WHERE DNI_Usuario = $DNI";
+		$sql_noticia= "UPDATE admin SET DNI_Usuario = '$DNI', Username = '$Username', Password = '$Password' WHERE DNI_Usuario = $DNI";
 		$result_noticia = AdminModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -85,11 +85,10 @@ class AdminModel
 	// Para eliminar
 
 	public static function DeleteAdmin ($DNI){
-		$sql_noticia = "DELETE FROM Admin WHERE DNI_Usuario = $DNI";
+		$sql_noticia = "DELETE FROM admin WHERE DNI_Usuario = $DNI";
 		$result_noticia = AdminModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 }
-
 ?>

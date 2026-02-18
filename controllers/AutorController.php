@@ -46,8 +46,6 @@ class AutorController
          $Nombre = $_POST['Nombre'];
          $Nacionalidad = $_POST['Nacionalidad'];
 
-         $Cutter = preg_replace('/\D/', '', $Cutter);
-
         $alert = null;
          if($this->validarAutor($Cutter)){
             $alert = [
@@ -175,6 +173,33 @@ class AutorController
          require_once('../biblioteca-sistema/views/generic/delete.php'); // O redirigir a donde prefieras
 	}
     
+    // ==================== BÚSQUEDA AJAX (JSON) ====================
+
+    function BuscarAutorJson(){
+        // Endpoint para autocomplete AJAX
+        header('Content-Type: application/json');
+        $query = isset($_GET['q']) ? $_GET['q'] : '';
+        
+        if(strlen($query) < 1){
+            echo json_encode([]);
+            exit;
+        }
+
+        $resultados = $this->autorModel->BuscarAutorByQuery($query);
+        $data = [];
+        while($row = mysqli_fetch_assoc($resultados)){
+            $data[] = [
+                'id' => $row['Cutter'],
+                'text' => $row['Nombre'] . ' - ' . $row['Cutter'],
+                'cutter' => $row['Cutter'],
+                'nombre' => $row['Nombre'],
+                'nacionalidad' => $row['Nacionalidad']
+            ];
+        }
+        echo json_encode($data);
+        exit;
+    }
+
     function validarAutor($Cutter = null){
         $valuesRepeat = $this->autorModel->ListarAutor();
 

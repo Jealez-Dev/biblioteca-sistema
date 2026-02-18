@@ -65,7 +65,14 @@
                             $title = isset($field['title']) ? "title='{$field['title']}'" : '';
                             $options = $field['options'] ?? [];
                         ?>
-                        
+
+                        <?php if ($type === 'hidden'): ?>
+                            <!-- Campo oculto: se renderiza sin contenedor visual -->
+                            <input type="hidden" 
+                                   name="<?php echo $field['name']; ?>" 
+                                   value="<?php echo $value; ?>">
+
+                        <?php else: ?>
                         <div class="col-md-6 mb-3" id="div_<?php echo $field['name']; ?>"> <!-- Usamos col-md-6 para 2 columnas -->
                             <label for="<?php echo $field['name']; ?>" class="font-weight-bold"> 
                                 <?php echo $field['label']; ?>: 
@@ -82,18 +89,12 @@
                             <?php elseif ($type === 'select'): ?>
                                 <select class="form-control" name="<?php echo $field['name']; ?>" <?php echo $required; ?>>
                                     <?php foreach ($options as $val => $text): 
-                                        // Si es array indexado (0,1,2...), $val es el índice y $text el valor. 
-                                        // Queremos que value=$text y texto=$text.
-                                        // Si es asociativo ('123' => 'Juan'), queremos value='123' y texto='Juan'.
-                                        
                                         $optionValue = is_string($val) || $val !== $text ? $val : $text;
-                                        // Pequeño hack: Si la clave es numérica automática (0, 1, 2) asumimos que es array simple
                                         if(is_int($val) && $val === array_search($text, $options)) {
                                             $optionValue = $text;
                                         } else {
                                             $optionValue = $val;
                                         }
-                                        
                                         $selected = ($value == $optionValue) ? 'selected' : '';
                                     ?>
                                         <option value="<?php echo $optionValue; ?>" <?php echo $selected; ?>>
@@ -101,6 +102,28 @@
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
+
+                            <?php elseif ($type === 'datalist'): ?>
+                                <?php 
+                                    // Generar un ID único para el datalist basado en el nombre del campo
+                                    $datalistId = 'datalist_' . $field['name'];
+                                    $dataHidden = isset($field['data-hidden']) ? $field['data-hidden'] : '';
+                                ?>
+                                <input type="text" 
+                                       class="form-control" 
+                                       name="<?php echo $field['name']; ?>" 
+                                       list="<?php echo $datalistId; ?>"
+                                       data-hidden="<?php echo $dataHidden; ?>"
+                                       value="<?php echo $value; ?>" 
+                                       <?php echo $required; ?> 
+                                       <?php echo $readonly; ?>
+                                       autocomplete="off"
+                                       placeholder="Escriba para buscar <?php echo strtolower($field['label']); ?>">
+                                <datalist id="<?php echo $datalistId; ?>">
+                                    <?php foreach ($options as $id => $text): ?>
+                                        <option value="<?php echo $text; ?>" data-id="<?php echo $id; ?>"></option>
+                                    <?php endforeach; ?>
+                                </datalist>
 
                             <?php else: ?>
                                 <input type="<?php echo $type; ?>" 
@@ -115,6 +138,7 @@
                                        placeholder="Ingrese <?php echo strtolower($field['label']); ?>">
                             <?php endif; ?>
                         </div>
+                        <?php endif; ?>
 
                         <?php endforeach; ?>
 

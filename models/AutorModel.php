@@ -61,7 +61,7 @@ class AutorModel
 
 	public static function IngresarAutor2 ($Cutter, $Nombre, $Nacionalidad){
 
-		$sql_noticia = "INSERT INTO autores (Cutter, Nombre, Nacionalidad) VALUES ($Cutter, '$Nombre', '$Nacionalidad')";
+		$sql_noticia = "INSERT INTO autores (Cutter, Nombre, Nacionalidad) VALUES ('$Cutter', '$Nombre', '$Nacionalidad')";
 		$result_noticia = AutorModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -69,14 +69,14 @@ class AutorModel
 	// Para la actualización 
 
 	public static function BuscarAutorByCutter($Cutter){
-    	$sql_noticia = "SELECT * FROM autores WHERE Cutter = $Cutter";
+    	$sql_noticia = "SELECT * FROM autores WHERE Cutter = '$Cutter'";
 		$result_noticia = AutorModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function UpdateAutor2 ($Cutter, $Nombre, $Nacionalidad){
 
-		$sql_noticia= "UPDATE autores SET Cutter = '$Cutter', Nombre = '$Nombre', Nacionalidad = '$Nacionalidad' WHERE Cutter = $Cutter";
+		$sql_noticia= "UPDATE autores SET Nombre = '$Nombre', Nacionalidad = '$Nacionalidad' WHERE Cutter = '$Cutter'";
 		$result_noticia = AutorModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -84,9 +84,17 @@ class AutorModel
 	// Para eliminar
 
 	public static function DeleteAutor ($Cutter){
-		$sql_noticia = "DELETE FROM autores WHERE Cutter = $Cutter";
+		$sql_noticia = "DELETE FROM autores WHERE Cutter = '$Cutter'";
 		$result_noticia = AutorModel::Update_Data($sql_noticia);
   		return $result_noticia;
+	}
+
+	// Para búsqueda AJAX (autocomplete)
+
+	public static function BuscarAutorByQuery($query){
+		$sql = "SELECT * FROM autores WHERE Nombre LIKE '%$query%' OR Cutter LIKE '%$query%' ORDER BY Cutter asc LIMIT 10";
+		$result = AutorModel::Get_Data($sql);
+  		return $result;
 	}
  
 }

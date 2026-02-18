@@ -45,7 +45,7 @@ class UserModel
 	
 
 	public static function ListarUser(){
-		$sql_noticia = "SELECT * FROM Usuario ORDER BY DNI asc";
+		$sql_noticia = "SELECT * FROM usuario ORDER BY DNI asc";
 		$result_noticia = UserModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -54,14 +54,14 @@ class UserModel
 
 	public static function BuscarUltimoUser(){
 
-		$sql_noticia = "SELECT (max(DNI)) as identific FROM Usuario order BY DNI asc";
+		$sql_noticia = "SELECT (max(DNI)) as identific FROM usuario order BY DNI asc";
 		$result_noticia = UserModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function IngresarUser2 ($DNI, $Nombre, $Apellido, $Edad, $Correo, $Num_Telefono){
 
-		$sql_noticia = "INSERT INTO Usuario (DNI, Nombre, Apellido, Edad, Correo, Num_Telefono) VALUES ('$DNI', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Num_Telefono')";
+		$sql_noticia = "INSERT INTO usuario (DNI, Nombre, Apellido, Edad, Correo, Num_Telefono) VALUES ('$DNI', '$Nombre', '$Apellido', '$Edad', '$Correo', '$Num_Telefono')";
 		$result_noticia = UserModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -69,14 +69,14 @@ class UserModel
 	// Para la actualización 
 
 	public static function BuscarUserById($DNI){
-    	$sql_noticia = "SELECT * FROM Usuario WHERE DNI = $DNI";
+    	$sql_noticia = "SELECT * FROM usuario WHERE DNI = $DNI";
 		$result_noticia = UserModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function UpdateUser2 ($DNI, $Nombre, $Apellido, $Edad, $Correo, $Num_Telefono){
 
-		$sql_noticia= "UPDATE Usuario SET Nombre = '$Nombre', Apellido = '$Apellido', Edad = '$Edad', Correo = '$Correo', Num_Telefono = '$Num_Telefono' WHERE DNI = $DNI";
+		$sql_noticia= "UPDATE usuario SET Nombre = '$Nombre', Apellido = '$Apellido', Edad = '$Edad', Correo = '$Correo', Num_Telefono = '$Num_Telefono' WHERE DNI = $DNI";
 		$result_noticia = UserModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -85,7 +85,7 @@ class UserModel
 	// Para eliminar
 
 	public static function DeleteUser ($DNI){
-		$sql_noticia = "DELETE FROM Usuario WHERE DNI = $DNI";
+		$sql_noticia = "DELETE FROM usuario WHERE DNI = $DNI";
 		$result_noticia = UserModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}

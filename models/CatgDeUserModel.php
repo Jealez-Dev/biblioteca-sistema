@@ -45,7 +45,7 @@ class CatgDeUserModel
 	
 
 	public static function ListarCatgDeUser(){
-		$sql_noticia = "SELECT * FROM Catg_de_User_SA ORDER BY ID asc";
+		$sql_noticia = "SELECT * FROM catg_de_user_sa ORDER BY ID asc";
 		$result_noticia = CatgDeUserModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -54,7 +54,7 @@ class CatgDeUserModel
 
 	public static function BuscarUltimoCatgDeUser(){
 
-		$sql_noticia = "SELECT (max(ID)) as identific FROM Catg_de_User_SA order BY ID asc";
+		$sql_noticia = "SELECT (max(ID)) as identific FROM catg_de_user_sa order BY ID asc";
 		$result_noticia = CatgDeUserModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -62,14 +62,14 @@ class CatgDeUserModel
 	// Para la actualización 
 
 	public static function BuscarCatgDeUserById($ID){
-    	$sql_noticia = "SELECT * FROM Catg_de_User_SA WHERE ID = $ID";
+    	$sql_noticia = "SELECT * FROM catg_de_user_sa WHERE ID = $ID";
 		$result_noticia = CatgDeUserModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function UpdateCatgDeUser2 ($ID, $N_de_dias, $N_de_ejemplares){
 
-		$sql_noticia= "UPDATE Catg_de_User_SA SET N_de_dias = '$N_de_dias', N_de_ejemplares = '$N_de_ejemplares' WHERE ID = $ID";
+		$sql_noticia= "UPDATE catg_de_user_sa SET N_de_dias = '$N_de_dias', N_de_ejemplares = '$N_de_ejemplares' WHERE ID = $ID";
 		$result_noticia = CatgDeUserModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
