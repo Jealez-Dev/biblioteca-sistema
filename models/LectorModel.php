@@ -45,7 +45,7 @@ class LectorModel
 	
 
 	public static function ListarLector(){
-		$sql_noticia = "SELECT * FROM Usuario_sin_acceso ORDER BY DNI_Usuario asc";
+		$sql_noticia = "SELECT * FROM usuario_sin_acceso ORDER BY DNI_Usuario asc";
 		$result_noticia = LectorModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -54,14 +54,14 @@ class LectorModel
 
 	public static function BuscarUltimoLector(){
 
-		$sql_noticia = "SELECT (max(DNI)) as identific FROM Usuario_sin_acceso order BY DNI_Usuario asc";
+		$sql_noticia = "SELECT (max(DNI)) as identific FROM usuario_sin_acceso order BY DNI_Usuario asc";
 		$result_noticia = LectorModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function IngresarLector2 ($DNI, $Carrera_Departamento, $ID_Catg_de_User_SA){
 
-		$sql_noticia = "INSERT INTO Usuario_sin_acceso (DNI_Usuario, Carrera_Departamento, ID_Catg_de_User_SA) VALUES ($DNI, '$Carrera_Departamento', '$ID_Catg_de_User_SA')";
+		$sql_noticia = "INSERT INTO usuario_sin_acceso (DNI_Usuario, Carrera_Departamento, ID_Catg_de_User_SA) VALUES ($DNI, '$Carrera_Departamento', '$ID_Catg_de_User_SA')";
 		$result_noticia = LectorModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -69,14 +69,14 @@ class LectorModel
 	// Para la actualización 
 
 	public static function BuscarLectorById($DNI){
-    	$sql_noticia = "SELECT * FROM Usuario_sin_acceso WHERE DNI_Usuario = $DNI";
+    	$sql_noticia = "SELECT * FROM usuario_sin_acceso WHERE DNI_Usuario = $DNI";
 		$result_noticia = LectorModel::Get_Data($sql_noticia);
   		return $result_noticia;
 	}
 
 	public static function UpdateLector2 ($DNI, $Carrera_Departamento, $ID_Catg_de_User_SA){
 
-		$sql_noticia= "UPDATE Usuario_sin_acceso SET DNI_Usuario = '$DNI', Carrera_Departamento = '$Carrera_Departamento', ID_Catg_de_User_SA = '$ID_Catg_de_User_SA' WHERE DNI_Usuario = $DNI";
+		$sql_noticia= "UPDATE usuario_sin_acceso SET DNI_Usuario = '$DNI', Carrera_Departamento = '$Carrera_Departamento', ID_Catg_de_User_SA = '$ID_Catg_de_User_SA' WHERE DNI_Usuario = $DNI";
 		$result_noticia = LectorModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}
@@ -85,7 +85,7 @@ class LectorModel
 	// Para eliminar
 
 	public static function DeleteLector ($DNI){
-		$sql_noticia = "DELETE FROM Usuario_sin_acceso WHERE DNI_Usuario = $DNI";
+		$sql_noticia = "DELETE FROM usuario_sin_acceso WHERE DNI_Usuario = $DNI";
 		$result_noticia = LectorModel::Update_Data($sql_noticia);
   		return $result_noticia;
 	}

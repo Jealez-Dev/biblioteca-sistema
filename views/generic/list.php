@@ -72,16 +72,26 @@ $numrows = mysqli_num_rows($registros);
                                 </td>
                             <?php endforeach; ?>
 
+                            <?php 
+                            // Construir parámetros extra para clave compuesta (si existe)
+                            $extraParams = '';
+                            if (isset($compositeKeys) && is_array($compositeKeys)) {
+                                foreach ($compositeKeys as $paramName => $fieldName) {
+                                    $extraParams .= '&' . $paramName . '=' . urlencode($row[$fieldName]);
+                                }
+                            }
+                            ?>
+
                             <!-- Botón Modificar -->
                             <td align="center">
-                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionUpdate; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?>" title="Modificar">
+                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionUpdate; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?><?php echo $extraParams; ?>" title="Modificar">
                                     <img width="50px" height="50px" src="../biblioteca-sistema/imagenes/update_icon.jpg" alt="Modificar">
                                 </a>
                             </td>
 
                             <!-- Botón Eliminar -->
                             <td align="center">
-                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionDelete; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?>" title="Eliminar">
+                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionDelete; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?><?php echo $extraParams; ?>" title="Eliminar">
                                     <img width="50px" height="50px" src="../biblioteca-sistema/imagenes/delete_icon.jpg" alt="Eliminar">
                                 </a>
                             </td>

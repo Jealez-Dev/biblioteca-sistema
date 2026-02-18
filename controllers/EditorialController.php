@@ -179,6 +179,32 @@ class EditorialController
          require_once('../biblioteca-sistema/views/generic/delete.php'); // O redirigir a donde prefieras
 	}
 
+    // ==================== BÚSQUEDA AJAX (JSON) ====================
+
+    function BuscarEditorialJson(){
+        // Endpoint para autocomplete AJAX
+        header('Content-Type: application/json');
+        $query = isset($_GET['q']) ? $_GET['q'] : '';
+        
+        if(strlen($query) < 1){
+            echo json_encode([]);
+            exit;
+        }
+
+        $resultados = $this->EditorialModel->BuscarEditorialByQuery($query);
+        $data = [];
+        while($row = mysqli_fetch_assoc($resultados)){
+            $data[] = [
+                'id' => $row['ID'],
+                'text' => $row['Nombre'] . ' - ID: ' . $row['ID'],
+                'nombre' => $row['Nombre'],
+                'sedeMatriz' => $row['SedeMatriz']
+            ];
+        }
+        echo json_encode($data);
+        exit;
+    }
+
     function validaEditorial($id, $nombre, $sedeMatriz, $email, $telefono = null){
         $valuesRepeat = $this->EditorialModel->ListarEditorial();
         $existe = $this->EditorialModel->BuscarEditorialById($id);

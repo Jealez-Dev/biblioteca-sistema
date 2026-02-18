@@ -8,8 +8,15 @@ $controllers=array(
 	'Admin'  =>['ListarAdmin', 'IngresarAdmin', 'IngresarAdmin2', 'UpdateAdmin', 'UpdateAdmin2', 'DeleteAdmin', 'DeleteAdmin1'],
 	'Lector' =>['ListarLector', 'IngresarLector', 'IngresarLector2', 'UpdateLector', 'UpdateLector2', 'DeleteLector', 'DeleteLector1'],
 	'CatgDeUser' =>['ListarCatgDeUser', 'UpdateCatgDeUser', 'UpdateCatgDeUser2'],
-	'Editorial' =>['ListarEditorial', 'IngresarEditorial', 'IngresarEditorial2', 'UpdateEditorial', 'UpdateEditorial2', 'DeleteEditorial', 'DeleteEditorial1'],
-	'Autor'  =>['ListarAutor', 'IngresarAutor', 'IngresarAutor2', 'UpdateAutor', 'UpdateAutor2', 'DeleteAutor', 'DeleteAutor1'],
+	'Editorial' =>['ListarEditorial', 'IngresarEditorial', 'IngresarEditorial2', 'UpdateEditorial', 'UpdateEditorial2', 'DeleteEditorial', 'DeleteEditorial1', 'BuscarEditorialJson'],
+	'Autor'  =>['ListarAutor', 'IngresarAutor', 'IngresarAutor2', 'UpdateAutor', 'UpdateAutor2', 'DeleteAutor', 'DeleteAutor1', 'BuscarAutorJson'],
+	'Cdd'    =>['ListarCdd', 'IngresarCdd', 'IngresarCdd2', 'UpdateCdd', 'UpdateCdd2', 'DeleteCdd', 'BuscarCddJson'],
+	'TObras' =>['ListarTObras', 'IngresarTObras', 'IngresarTObras2', 'UpdateTObras', 'UpdateTObras2', 'DeleteTObras', 'BuscarTObrasJson'],
+	'Obra'   =>['ListarObra', 'IngresarObra', 'IngresarObra2', 'UpdateObra', 'UpdateObra2', 'DeleteObra', 'GuardarEstadoObra'],
+	'Ejemplar' => ['ListarEjemplar', 'IngresarEjemplar', 'IngresarEjemplar2', 'UpdateEjemplar', 'UpdateEjemplar2', 'DeleteEjemplar'],
+	'Prestamo' => ['ListarPrestamo', 'IngresarPrestamo', 'IngresarPrestamo2', 'UpdatePrestamo', 'UpdatePrestamo2', 'DeletePrestamo'],
+	'TSoporte' => ['ListarTSoporte'],
+	'Estado'   => ['ListarEstado'],
 	// este arreglo ira creciendo a la medida que va creciendo las opciones de menu me mi sistema
 );
 
@@ -53,7 +60,28 @@ function call($controller, $action){
 			  break;
 		case 'Autor':
 			  $controller= new AutorController();
-			  break;	  
+			  break;
+		case 'Cdd':
+			  $controller= new CddController();
+			  break;
+		case 'TObras':
+			  $controller= new TObrasController();
+			  break;
+		case 'Obra':
+			  $controller= new ObraController();
+			  break;
+		case 'Ejemplar':
+			  $controller= new EjemplarController();
+			  break;
+		case 'Prestamo':
+			  $controller= new PrestamoController();
+			  break;
+		case 'TSoporte':
+			  $controller= new TSoporteController();
+			  break;
+		case 'Estado':
+			  $controller= new EstadoController();
+			  break;
 			 // en este switche habran tantos case como listas del menu se tengan
 	}
 	

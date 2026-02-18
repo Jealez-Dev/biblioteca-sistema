@@ -27,9 +27,10 @@ return [
         'tituloUpdate' => "Actualización de Autor",
         'actionUpdate' => "UpdateAutor2",
         'formFields' => [
-            ['label' => 'Cutter', 'name' => 'Cutter', 'type' => 'number', 'required' => true, 'readonly' => true],
+            ['label' => 'Cutter', 'name' => 'Cutter', 'type' => 'text', 'required' => true, 'readonly' => true],
             ['label' => 'Nombre', 'name' => 'Nombre', 'type' => 'text', 'required' => true],
             ['label' => 'Nacionalidad', 'name' => 'Nacionalidad', 'type' => 'text', 'required' => true]
         ],
     ],
 ];
+
