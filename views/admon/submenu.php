@@ -62,20 +62,20 @@ $(function(){
                      
     
                       <li>
-                          <a class="trigger right-caret nav-link">Consultorio</a>
+                          <a class="trigger right-caret nav-link">Obras</a>
                           <ul class="dropdown-menu sub-menu">
-                              <a class="dropdown-item" href="?controller=Noticia&action=ListarNoticia">Listar</a>
+                              <a class="dropdown-item" href="?controller=Obra&action=ListarObra">Listar</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="?controller=Noticia&action=IngresarNoticia">Ingresar</a>
+                              <a class="dropdown-item" href="?controller=Obra&action=IngresarObra">Ingresar</a>
                           </ul>
                       </li>
             
                       <li>
-                          <a class="trigger right-caret nav-link">Especialidades</a>
+                          <a class="trigger right-caret nav-link">Ejemplares</a>
                           <ul class="dropdown-menu sub-menu">
-                              <a class="dropdown-item" href="?controller=Noticia&action=ListarNoticia">Listar</a>
+                              <a class="dropdown-item" href="?controller=Ejemplar&action=ListarEjemplar">Listar</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="?controller=Noticia&action=IngresarNoticia">Ingresar</a>
+                              <a class="dropdown-item" href="?controller=Ejemplar&action=IngresarEjemplar">Ingresar</a>
                           </ul>
                       </li>
            
@@ -202,11 +202,13 @@ $(function(){
 
 
   				  <li class="nav-item">
-    				<a class="nav-link" href="?controller=User&action=Desconectar">Cerrar Sesión</a>
+    				<a class="nav-link" href="?controller=Login&action=Logout">Cerrar Sesión</a>
   				  </li>
+            <?php if (isset($_SESSION['User'])): ?>
             <login>
             <a class="text-dark" text-align="right"> <b> User: </b> <?php echo $_SESSION['User']?> <b>  Nivel:</b> <?php echo $_SESSION['Nivel']?> </a>
             </login>
+            <?php endif; ?>
 				</ul>
        
 		</div>

@@ -3,7 +3,6 @@
 
 $controllers=array(
 	
-	'Noticia'=>['ListarNoticia', 'IngresarNoticia', 'IngresarNoticia1', 'UpdateNoticia', 'UpdateNoticia1', 'DeleteNoticia'],
 	'User'   =>['ListarUser', 'IngresarUser', 'IngresarUser2', 'UpdateUser', 'UpdateUser2', 'DeleteUser', 'DeleteUser1'],
 	'Admin'  =>['ListarAdmin', 'IngresarAdmin', 'IngresarAdmin2', 'UpdateAdmin', 'UpdateAdmin2', 'DeleteAdmin', 'DeleteAdmin1'],
 	'Lector' =>['ListarLector', 'IngresarLector', 'IngresarLector2', 'UpdateLector', 'UpdateLector2', 'DeleteLector', 'DeleteLector1'],
@@ -14,9 +13,12 @@ $controllers=array(
 	'TObras' =>['ListarTObras', 'IngresarTObras', 'IngresarTObras2', 'UpdateTObras', 'UpdateTObras2', 'DeleteTObras', 'BuscarTObrasJson'],
 	'Obra'   =>['ListarObra', 'IngresarObra', 'IngresarObra2', 'UpdateObra', 'UpdateObra2', 'DeleteObra', 'GuardarEstadoObra'],
 	'Ejemplar' => ['ListarEjemplar', 'IngresarEjemplar', 'IngresarEjemplar2', 'UpdateEjemplar', 'UpdateEjemplar2', 'DeleteEjemplar'],
-	'Prestamo' => ['ListarPrestamo', 'IngresarPrestamo', 'IngresarPrestamo2', 'UpdatePrestamo', 'UpdatePrestamo2', 'DeletePrestamo'],
+	'Prestamo' => ['ListarPrestamo', 'IngresarPrestamo', 'IngresarPrestamo2', 'UpdatePrestamo', 'DeletePrestamo'],
+	'Renovacion' => ['ListarRenovacion', 'IngresarRenovacion', 'IngresarRenovacion2', 'UpdateRenovacion', 'UpdateRenovacion2', 'DeleteRenovacion'],
+	'Cancelacion' => ['ListarCancelacion', 'IngresarCancelacion', 'IngresarCancelacion2', 'UpdateCancelacion', 'UpdateCancelacion2', 'DeleteCancelacion'],
 	'TSoporte' => ['ListarTSoporte'],
 	'Estado'   => ['ListarEstado'],
+	'Login'    => ['Index', 'Login', 'Logout'],
 	// este arreglo ira creciendo a la medida que va creciendo las opciones de menu me mi sistema
 );
 
@@ -26,11 +28,11 @@ if (@array_key_exists($controller, $controllers)) {
 		call($controller, $action);
 	}
 	else{
-		call('Noticia','ListarNoticia');
+		call('Obra','ListarObra');
 	}		
 }else{
 	
-		call('Noticia','ListarNoticia');
+		call('Obra','ListarObra');
 }
 
 function call($controller, $action){
@@ -40,9 +42,6 @@ function call($controller, $action){
 
 	switch ($controller) {
 		 
-		case 'Noticia': 
-			  $controller= new NoticiaController();
-			  break;
 		case 'User':
 			  $controller= new UserController();
 			  break;
@@ -76,11 +75,20 @@ function call($controller, $action){
 		case 'Prestamo':
 			  $controller= new PrestamoController();
 			  break;
+		case 'Renovacion':
+			  $controller= new RenovacionController();
+			  break;
+		case 'Cancelacion':
+			  $controller= new CancelacionController();
+			  break;
 		case 'TSoporte':
 			  $controller= new TSoporteController();
 			  break;
 		case 'Estado':
 			  $controller= new EstadoController();
+			  break;
+		case 'Login':
+			  $controller= new LoginController();
 			  break;
 			 // en este switche habran tantos case como listas del menu se tengan
 	}

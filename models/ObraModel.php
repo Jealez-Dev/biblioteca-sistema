@@ -119,9 +119,12 @@ class ObraModel
     // ==================== ELIMINAR ====================
 
 	public static function DeleteObra($anio, $cutter, $codigoCdd){
-		$sql = "DELETE FROM obras WHERE Año = '$anio' AND Cutter_Autor = '$cutter' AND Codigo_CDD = '$codigoCdd'";
-		$result = ObraModel::Update_Data($sql);
-  		return $result;
+		include_once('models/CascadeModel.php');
+		return CascadeModel::RecursiveDelete('obras', [
+			'Año' => $anio,
+			'Cutter_Autor' => $cutter,
+			'Codigo_CDD' => $codigoCdd
+		]);
 	}
 }
 ?>

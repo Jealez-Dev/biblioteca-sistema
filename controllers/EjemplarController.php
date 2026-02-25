@@ -202,7 +202,7 @@ class EjemplarController
         $cutter = $_GET['cutter'] ?? '';
         $cdd = $_GET['cdd'] ?? '';
 
-        $this->model->DeleteEjemplar($nEjemplar, $anio, $cutter, $cdd);
+        $result = $this->model->DeleteEjemplar($nEjemplar, $anio, $cutter, $cdd);
 
         $registros = $this->model->ListarEjemplar();
         $config = require('../biblioteca-sistema/config/forms/ejemplarform.php');

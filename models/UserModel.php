@@ -85,9 +85,8 @@ class UserModel
 	// Para eliminar
 
 	public static function DeleteUser ($DNI){
-		$sql_noticia = "DELETE FROM usuario WHERE DNI = $DNI";
-		$result_noticia = UserModel::Update_Data($sql_noticia);
-  		return $result_noticia;
+		include_once('models/CascadeModel.php');
+		return CascadeModel::RecursiveDelete('usuario', ['DNI' => $DNI]);
 	}
 
 }

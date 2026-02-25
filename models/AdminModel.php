@@ -84,10 +84,25 @@ class AdminModel
 	
 	// Para eliminar
 
-	public static function DeleteAdmin ($DNI){
-		$sql_noticia = "DELETE FROM admin WHERE DNI_Usuario = $DNI";
-		$result_noticia = AdminModel::Update_Data($sql_noticia);
-  		return $result_noticia;
+	public static function DeleteAdmin ($DNI_Usuario){
+		include_once('models/CascadeModel.php');
+		return CascadeModel::RecursiveDelete('admin', ['DNI_Usuario' => $DNI_Usuario]);
+	}
+
+	public static function Login($Username, $Password){
+		$sql = "SELECT * FROM admin WHERE Username = '$Username'";
+		$result = AdminModel::Get_Data($sql);
+		
+		if (mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			if ($row['Password'] === $Password) {
+				return ['status' => 'success', 'user' => $row];
+			} else {
+				return ['status' => 'incorrect_password'];
+			}
+		} else {
+			return ['status' => 'invalid_user'];
+		}
 	}
 
 }

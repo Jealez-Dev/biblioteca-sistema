@@ -42,8 +42,8 @@ $numrows = mysqli_num_rows($registros);
                         <th class="th-sm"><?php echo $header; ?></th>
                     <?php endforeach; ?>
                     <!-- Columnas fijas para acciones -->
-                    <th class="th-sm">Modificar</th>
-                    <th class="th-sm">Eliminar</th>
+                    <th class="th-sm"><?php echo isset($labelUpdate) ? $labelUpdate : 'Modificar'; ?></th>
+                    <th class="th-sm"><?php echo isset($labelDelete) ? $labelDelete : 'Eliminar'; ?></th>
                 </tr>
             </thead>
 
@@ -82,17 +82,19 @@ $numrows = mysqli_num_rows($registros);
                             }
                             ?>
 
-                            <!-- Botón Modificar -->
+                            <!-- Botón Modificar / Renovar -->
                             <td align="center">
-                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionUpdate; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?><?php echo $extraParams; ?>" title="Modificar">
-                                    <img width="50px" height="50px" src="../biblioteca-sistema/imagenes/update_icon.jpg" alt="Modificar">
+                                <?php $lblUpdate = isset($labelUpdate) ? $labelUpdate : 'Modificar'; ?>
+                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionUpdate; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?><?php echo $extraParams; ?>" title="<?php echo $lblUpdate; ?>">
+                                    <img width="50px" height="50px" src="../biblioteca-sistema/imagenes/update_icon.jpg" alt="<?php echo $lblUpdate; ?>">
                                 </a>
                             </td>
 
-                            <!-- Botón Eliminar -->
+                            <!-- Botón Eliminar / Cancelar -->
                             <td align="center">
-                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionDelete; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?><?php echo $extraParams; ?>" title="Eliminar">
-                                    <img width="50px" height="50px" src="../biblioteca-sistema/imagenes/delete_icon.jpg" alt="Eliminar">
+                                <?php $lblDelete = isset($labelDelete) ? $labelDelete : 'Eliminar'; ?>
+                                <a href="?controller=<?php echo $controller; ?>&action=<?php echo $actionDelete; ?>&id=<?php echo $idValue; ?>&i=<?php echo $idValue; ?><?php echo $extraParams; ?>" title="<?php echo $lblDelete; ?>">
+                                    <img width="50px" height="50px" src="../biblioteca-sistema/imagenes/delete_icon.jpg" alt="<?php echo $lblDelete; ?>">
                                 </a>
                             </td>
                         </tr>

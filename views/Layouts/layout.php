@@ -26,7 +26,8 @@
 <header>
 	<?php 
 	   	require_once('../biblioteca-sistema/views/Layouts/banner.php');
-    	require_once('../biblioteca-sistema/views/Layouts/header.php');
+		if (isset($_SESSION['User']))
+    		require_once('../biblioteca-sistema/views/Layouts/header.php');
 	?>	
 </header>
 

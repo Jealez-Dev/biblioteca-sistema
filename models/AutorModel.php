@@ -82,11 +82,9 @@ class AutorModel
 	}
 
 	// Para eliminar
-
 	public static function DeleteAutor ($Cutter){
-		$sql_noticia = "DELETE FROM autores WHERE Cutter = '$Cutter'";
-		$result_noticia = AutorModel::Update_Data($sql_noticia);
-  		return $result_noticia;
+		include_once('models/CascadeModel.php');
+		return CascadeModel::RecursiveDelete('autores', ['Cutter' => $Cutter]);
 	}
 
 	// Para búsqueda AJAX (autocomplete)

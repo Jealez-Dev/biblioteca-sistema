@@ -84,9 +84,8 @@ class CddModel
 	// Para eliminar
 
 	public static function DeleteCdd ($Codigo){
-		$sql = "DELETE FROM cdd WHERE Codigo = '$Codigo'";
-		$result = CddModel::Update_Data($sql);
-  		return $result;
+		include_once('models/CascadeModel.php');
+		return CascadeModel::RecursiveDelete('cdd', ['Codigo' => $Codigo]);
 	}
 
 	// Para búsqueda AJAX (autocomplete)

@@ -305,9 +305,9 @@ ALTER TABLE `Autores`
   ADD PRIMARY KEY (`Cutter`);
 
 --
--- Indices de la tabla `Cancela`
+-- Indices de la tabla `Cancelacion`
 --
-ALTER TABLE `Cancela`
+ALTER TABLE `Cancelacion`
   ADD PRIMARY KEY (`N_control`,`Username`),
   ADD KEY `Username` (`Username`);
 
@@ -367,9 +367,9 @@ ALTER TABLE `Prestamos`
   ADD PRIMARY KEY (`N_de_control`);
 
 --
--- Indices de la tabla `Renueva`
+-- Indices de la tabla `Renovacion`
 --
-ALTER TABLE `Renueva`
+ALTER TABLE `Renovacion`
   ADD PRIMARY KEY (`N_control`,`Username`),
   ADD KEY `Username` (`Username`);
 
